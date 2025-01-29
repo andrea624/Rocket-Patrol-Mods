@@ -7,7 +7,7 @@ class Menu extends Phaser.Scene{
         this.load.image('rocket', './assets/rocket.png')
         this.load.image('spaceship', './assets/spaceship.png')
         this.load.image('ufo', './assets/ufo.png')
-        this.load.image('starfield', './assets/starfield.png')
+        this.load.image('galaxy', './assets/galaxy.png')
         this.load.spritesheet('explosion', './assets/explosion.png',{
             frameWidth: 64,
             frameHeight: 32,
@@ -29,9 +29,9 @@ class Menu extends Phaser.Scene{
 
         let menuConfig = {
             fontFamily: 'Courier',
-            fontSize: '28px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
+            fontSize: '26px',
+            backgroundColor: '#C891FF',
+            color: '#E0CFF2',
             align: 'right',
             padding: {
                 top: 5,
@@ -41,8 +41,8 @@ class Menu extends Phaser.Scene{
         }
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'ROCKET PATROL', menuConfig).setOrigin(0.5)
         this.add.text(game.config.width/2, game.config.height/2, 'Use <--> arrows to move & (F) to fire', menuConfig).setOrigin(0.5)
-        menuConfig.backgroundColor = '#00FF00'
-        menuConfig.color = '#000'
+        menuConfig.backgroundColor = '#C891FF'
+        menuConfig.color = '#E0CFF2'
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press <- for Novice or -> for Expert', menuConfig).setOrigin(0.5)
         //defines keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)

@@ -2,7 +2,7 @@
 Andrea Martinez
 Modifications:
 5 points: Enemy Spaceship moving faster, worth more, and smaller
-
+1 point: Create New Background Tile Sprite 
 
 */
 let config = {
