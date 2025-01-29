@@ -1,5 +1,14 @@
+/*
+Andrea Martinez
+Modifications:
+5 points: Enemy Spaceship moving faster, worth more, and smaller
+
+
+*/
 let config = {
     type: Phaser.AUTO,
+    //turned pixel art on to make ufo clear
+    pixelArt: true,
     width: 640,
     height: 480,
     scene: [ Menu, Play ]
