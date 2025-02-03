@@ -2,7 +2,10 @@
 Andrea Martinez
 Modifications:
 5 points: Enemy Spaceship moving faster, worth more, and smaller
+5 points: Mouse Movement and Left click to fire
+1 point: Allows player to move ship even after being fired
 1 point: Create New Background Tile Sprite 
+Totals points: 12
 
 */
 let config = {

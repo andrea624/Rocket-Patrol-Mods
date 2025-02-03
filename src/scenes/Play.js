@@ -18,7 +18,7 @@ class Play extends Phaser.Scene{
          // white borders
         this.add.rectangle(0, 0, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0,0)
         this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0,0)
-        this.add.rectangle(0, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0,0);
+        this.add.rectangle(0, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0,0)
         this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0,0)
         
 
@@ -89,6 +89,26 @@ class Play extends Phaser.Scene{
             this.p1Rocket.reset()
             this.shipExplode(this.ship04)
         }
+        // pointer input 
+        
+        this.p1Rocket.setInteractive()
+        this.input.on('pointerdown', () => {
+            if (!this.gameOver && !this.p1Rocket.isFiring) {
+                this.p1Rocket.isFiring = true
+            }
+        })
+        this.input.on('pointermove', (pointer) => {
+            this.p1Rocket.x = Phaser.Math.Clamp(pointer.x, borderUISize, game.config.width - borderUISize)
+        })
+        if (this.p1Rocket.isFiring) {
+            if (keyLEFT.isDown) {
+                this.p1Rocket.x -= 4 //moves left
+            }
+            if (keyRIGHT.isDown) {
+                this.p1Rocket.x += 4 //moves right
+            }
+        }
+    
 
 
     }
@@ -105,7 +125,7 @@ class Play extends Phaser.Scene{
         //temporarily hide ship
         ship.alpha = 0
         //create explosion sprite at the ship's position
-        let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0,0);
+        let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0,0)
         boom.anims.play('explode') //plays explode animation
         boom.on('animationcomplete', () => { //callback after animation completes
             ship.reset() //resets ship position
