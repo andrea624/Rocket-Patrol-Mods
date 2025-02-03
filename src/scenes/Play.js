@@ -5,6 +5,7 @@ class Play extends Phaser.Scene{
     }
     create(){
         // this places the tile sprite
+        this.hitTimeBonus = 5 //  adds 5s
         this.starfield = this.add.tileSprite(0, 0, 640, 480, 'galaxy').setOrigin(0,0)
         // purple UI background
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0xCCAEEA).setOrigin(0,0)
@@ -61,6 +62,10 @@ class Play extends Phaser.Scene{
     
     }
     update(){
+
+        let remainingTime = Math.ceil(this.clock.getRemainingSeconds())//remaining time ceil() rounds
+        this.timeLeft.text = `Time: ${remainingTime}s`
+
         // check key input for restart
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyRESET)){
             this.scene.restart()
@@ -77,6 +82,7 @@ class Play extends Phaser.Scene{
             this.ship03.update()
             this.ship04.update()
         }
+    
 
 
         // check collisions
@@ -125,13 +131,10 @@ class Play extends Phaser.Scene{
                 this.p1Rocket.x += 4 //moves right
             }
         }
-        let remainingTime = Math.ceil(this.clock.getRemainingSeconds())//remaining time ceil() rounds
-        this.timeLeft.text = `Time: ${remainingTime}s`
-
-       
+    
 
     }
-    
+ 
 
     checkCollision(rocket, ship){
         // simple aabb checking
@@ -156,8 +159,11 @@ class Play extends Phaser.Scene{
         //score add and text update
         this.p1Score += ship.points
         this.scoreLeft.text = this.p1Score
+        this.clock.delay += this.hitTimeBonus * 1000
         this.sound.play('sfx-explosion')
-        this.remainingTime += this.addedTime
+
     }
+
+    
 
 }

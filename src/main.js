@@ -1,12 +1,13 @@
 /*
 Andrea Martinez
-Hours Spent: 11
+Hours Spent: 12
 Modifications:
 5 points: Enemy Spaceship moving faster, worth more, and smaller
 5 points: Mouse Movement and Left click to fire
 3 points: Displays Time
 1 point: Allows player to move ship even after being fired
 1 point: Create New Background Tile Sprite 
+Not complete: 5 points: Adds 5s for hits but nothing for misses
 
 Totals points: 15
 sources used : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil used to help create my remaining time variable to help round and not show mili secs
